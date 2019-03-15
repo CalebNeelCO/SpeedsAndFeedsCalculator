@@ -35,7 +35,7 @@ def getCL(dia,  materal, endmilltype):
   else:
     return False
   
-def getSpeeds(dia, numOfTeeth, materal="", endmilltype="", sfm=0):
+def getSpeeds(dia, numOfTeeth, materal="", endmilltype="", sfm=0, CL = 0):
   speeds = []
   if(sfm != 0):
     sfm = [sfm]
@@ -43,7 +43,8 @@ def getSpeeds(dia, numOfTeeth, materal="", endmilltype="", sfm=0):
     sfm = getSFM(materal, endmilltype)
   for x in range(len(sfm)):
     rpm = getRMP(dia, sfm[x])
-    CL = getCL(dia, materal, endmilltype)
+    if(CL == 0):
+      CL = getCL(dia, materal, endmilltype)
     ipr = CL * numOfTeeth
     ipm = ipr * rpm
     speeds.append({'num':x,'RPM':rpm, 'SFM':sfm[x] ,'IPR': ipr, 'IPM':ipm, "ChipLoad": CL})
