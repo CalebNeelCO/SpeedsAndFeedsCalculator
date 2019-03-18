@@ -1,5 +1,11 @@
 import json
+from flask import Flask
+app = Flask(__name__)
 
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+  
 materals = """{
   "Carbide": {
     "Aluminum 440, 356, 380, C61300": {
@@ -66,3 +72,5 @@ print getSpeeds(0.5,4,materal="Aluminum 440, 356, 380, C61300",endmilltype="Carb
       "1":,
     }"""
 
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=True)
