@@ -1,16 +1,6 @@
 import json
 from flask import Flask, jsonify, render_template, request
 app = Flask(__name__)
-
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
-
-@app.route('/speedsandfeedsendpoint')
-def calulatue():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    return jsonify(result=a + b)
   
 materals = """{
   "Carbide": {
@@ -285,9 +275,17 @@ def getSpeeds(dia, numOfTeeth, materal="", endmilltype="", sfm=0, CL = 0):
   return speeds
   
 
-print getSpeeds(0.5,4,materal="Aluminum 440, 356, 380, C61300",endmilltype="Carbide")
+#print getSpeeds(0.5,4,materal="Aluminum 440, 356, 380, C61300",endmilltype="Carbide")
 
+@app.route('/')
+def hello_world():
+    return render_template('index.html', materals=materals)
 
+@app.route('/speedsandfeedsendpoint')
+def calulatue():
+    a = request.args.get('a', 0, type=int)
+    b = request.args.get('b', 0, type=int)
+    return jsonify(result=a + b)
 """ "":{
       SFM:"",
       "1/8":,
