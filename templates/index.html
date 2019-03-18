@@ -1,7 +1,7 @@
 <script type=text/javascript>
   $(function() {
     $('a#calculate').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+      $.getJSON('https://machiningtoolchain.herokuapp.com/speedsandfeedsendpoint', {
         a: $('input[name="a"]').val(),
         b: $('input[name="b"]').val()
       }, function(data) {
