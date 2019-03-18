@@ -279,7 +279,7 @@ def getSpeeds(dia, numOfTeeth, materal="", endmilltype="", sfm=0, CL = 0):
 
 @app.route('/')
 def hello_world():
-    return render_template('index.html', materals=materals)
+    return render_template('speeds.html', materals=materals)
 
 @app.route('/speedsandfeedsendpoint')
 def calulatue():
